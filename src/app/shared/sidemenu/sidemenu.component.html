@@ -1,1 +1,27 @@
-<p>sidemenu works!</p>
+<h2>Template</h2>
+<p>Maneja los formularios de manera automática, casi todo en el HTML</p>
+<hr>
+
+<ul class="list-group">
+  <li *ngFor="let item of templateMenu"
+      class="list-group-item"
+      [routerLink]="[item.route]"
+      routerLinkActive="active"
+      >
+    {{ item.text }}
+  </li>
+</ul>
+
+<h2 class="mt-5">Reactive</h2>
+<p>Esta procura que el HTML sea lo más básico posible y que todo el trabajo pesado lo tengamos en el componente de TypeScript</p>
+<hr>
+
+<ul class="list-group">
+  <li *ngFor="let item of reactiveMenu"
+      class="list-group-item"
+      [routerLink]="[item.route]"
+      routerLinkActive="active"
+      >
+    {{ item.text }}
+  </li>
+</ul>
