@@ -4,21 +4,24 @@
 <div class="row">
   <div class="col">
 
-    <form myForm autocomplete="off" (ngSubmit)="save()" #myForm="ngForm">
+    <form myForm autocomplete="off" (ngSubmit)="save(myForm)" #myForm="ngForm">
 
       <!-- Campo de producto -->
       <div class="mb-3 row">
         <label class="col-sm-2 col-form-label">Producto</label>
         <div class="col-sm-10">
           <input type="text"
+          ngModel
+          required
           class="form-control"
           placeholder="Nombre del producto"
-          ngModel
           name="producto"
           minlength="3"
           >
-          <span *ngIf="nameValid"
-            class="form-text text-danger">Debe ser de 3 letras</span>
+          <span *ngIf="!nameValid()"
+            class="form-text text-danger">
+            Debe ser de 3 letras
+          </span>
         </div>
       </div>
 
@@ -27,11 +30,17 @@
         <label class="col-sm-2 col-form-label">Precio</label>
         <div class="col-sm-10">
           <input type="number"
+          ngModel
+          required
           class="form-control"
           placeholder="Precio del producto"
-          ngModel
           name="precio"
+          min="0"
           >
+          <span *ngIf="!priceValid()"
+            class="form-text text-danger">
+            No puede ser 0
+          </span>
         </div>
       </div>
 
@@ -51,7 +60,7 @@
       <!-- Button -->
       <div class="row">
         <div class="col">
-          <button class="btn btn-primary float-end" type="submit">
+          <button class="btn btn-primary float-end" [disabled]="!myForm.valid" type="submit">
             Guardar
           </button>
         </div>
