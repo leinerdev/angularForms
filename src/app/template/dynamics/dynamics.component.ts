@@ -13,4 +13,8 @@ export class DynamicsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  save() {
+    console.log('Formulario posteado');
+  }
+
 }

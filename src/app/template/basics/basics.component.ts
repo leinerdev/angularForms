@@ -18,6 +18,7 @@ export class BasicsComponent implements OnInit {
 
   save(myForm: NgForm) {
     console.log(myForm);
+    this.myForm.resetForm();
   }
 
   nameValid (): boolean {
