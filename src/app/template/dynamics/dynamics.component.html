@@ -1,8 +1,8 @@
 <h2>Template: <small>Dinámicos</small></h2>
-<hr>
+<hr />
 
 <form (ngSubmit)="save()" autocomplete="off" #myForm="ngForm">
-
+  <!-- Nombre de la persona -->
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Nombre</label>
     <div class="col-sm-9">
@@ -11,21 +11,62 @@
         placeholder="Nombre de la persona"
         required
         name="nombre"
-        ngModel>
-      <span class="form-text text-danger" *ngIf="myForm.controls['nombre'] && myForm.controls['nombre'].touched"></span>
+        [ngModel]="persona.nombre"
+      />
+      <span
+        class="form-text text-danger"
+        *ngIf="myForm.controls['nombre'] && myForm.controls['nombre'].touched"
+      ></span>
     </div>
   </div>
 
+  <!-- Agregar favorito -->
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Agregar</label>
     <div class="col-sm-9">
-      <input
-        class="form-control"
-        placeholder="Nombre de la persona"
-        required
-        name="nombre"
-        ngModel>
-      <span class="form-text text-danger" *ngIf="myForm.controls['nombre'] && myForm.controls['nombre'].touched"></span>
+      <div class="input-group">
+        <input
+          class="form-control"
+          [(ngModel)]="nuevoJuego"
+          name="nuevoJuego"
+          placeholder="Agregar favorito"
+          (keyup.enter)="agregar()"
+        />
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          (click)="agregar()"
+        >
+          Agregar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lista de juegos favoritos -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Label</label>
+    <div class="col-sm-9">
+      <div
+        *ngFor="let juego of persona.favoritos; let i = index"
+        class="input-group mb-2"
+      >
+        <input
+          [(ngModel)]="juego.nombre"
+          name="favorito_{{ i }}"
+          class="form-control mb-2"
+          required
+        />
+        <button
+          class="btn btn-danger float-end"
+          type="button"
+          (click)="save()"
+          [disabled]="myForm.invalid"
+          (click)="eliminar(i)"
+        >
+          Eliminar
+        </button>
+      </div>
     </div>
   </div>
 
@@ -35,9 +76,13 @@
         class="btn btn-primary float-end"
         type="button"
         (click)="save()"
-        [disabled]="myForm.invalid">
+        [disabled]="myForm.invalid"
+      >
         Guardar
       </button>
     </div>
   </div>
 </form>
+
+<span>Persona</span>
+<pre>{{ persona | json }}</pre>
