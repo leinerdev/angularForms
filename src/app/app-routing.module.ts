@@ -13,6 +13,11 @@ const routes: Routes = [
     loadChildren: () => import('./reactive/reactive.module').then( m => m.ReactiveModule )
   },
   {
+    path: 'auth',
+    // Lazy Load
+    loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule )
+  },
+  {
     path: '**',
     redirectTo: 'template'
   }
