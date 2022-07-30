@@ -1,1 +1,82 @@
-<p>switches works!</p>
+<h2>Reactivos: Switches</h2>
+<hr />
+
+<form>
+  <!-- Radios -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Género</label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="radioGenero"
+          id="flexRadioDefault1"
+          value="M"
+        />
+        <label class="form-check-label" for="flexRadioDefault1">
+          Masculino
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="radioGenero"
+          id="flexRadioDefault2"
+          value="F"
+        />
+        <label class="form-check-label" for="flexRadioDefault2">
+          Femenino
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Switches -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Notificaciones</label>
+    <div class="col-sm-9">
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input mt-2"
+          type="checkbox"
+          role="switch"
+          id="flexSwitchCheckChecked"
+          name="notifications"
+        />
+        <label class="form-check-label mt-1" for="flexSwitchCheckChecked"
+          >Quiero recibir notificaciones</label
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkbox -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input
+          class="form-check-input mt-2"
+          type="checkbox"
+          value=""
+          name="terms"
+          id="flexCheckDefault"
+        />
+        <label class="form-check-label mt-1" for="flexCheckDefault">
+          Términos y condiciones
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Button -->
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary float-end">
+        Guardar
+      </button>
+    </div>
+  </div>
+</form>
