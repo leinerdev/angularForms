@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { emailPattern, nombreApellidoPattern, noPuedeSerLeiner } from 'src/app/shared/validator/validators';
+
+import { camposIguales, emailPattern, nombreApellidoPattern, noPuedeSerLeiner } from 'src/app/shared/validator/validators';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,11 @@ export class RegisterComponent implements OnInit {
   myForm: FormGroup = this.fb.group({
     nombre: ['', [Validators.required, Validators.pattern(nombreApellidoPattern)]],
     email: ['', [Validators.required, Validators.pattern(emailPattern)]],
-    username: ['', [Validators.required, noPuedeSerLeiner]]
+    username: ['', [Validators.required, noPuedeSerLeiner]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    password2: ['', [Validators.required]],
+  }, {
+    validators: [camposIguales('password', 'password2')]
   });
 
   constructor(private fb: FormBuilder) { }
