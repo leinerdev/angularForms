@@ -27,7 +27,9 @@
             type="email"
             placeholder="Email del usuario"
             class="form-control"
+            formControlName="email"
           />
+          <span *ngIf="campoNoValido('email')" class="form-text text-danger">El correo es obligatorio</span>
         </div>
       </div>
 
@@ -39,7 +41,9 @@
             type="text"
             placeholder="Nombre código del usuario"
             class="form-control"
+            formControlName="username"
           />
+          <span *ngIf="campoNoValido('username')" class="form-text text-danger">El username {{ myForm.controls['username'].value }} ya existe.</span>
         </div>
       </div>
 
@@ -77,3 +81,13 @@
 </div>
 
 <h2>Form Valid: {{ myForm.valid }}</h2>
+
+<h5>Nombre</h5>
+<pre>{{ myForm.controls['nombre'].errors | json }}</pre>
+
+<h5>Email</h5>
+<pre>{{ myForm.controls['email'].errors | json }}</pre>
+
+<h5>Username</h5>
+<pre>{{ myForm.controls['username'].errors | json }}</pre>
+
